@@ -46,7 +46,7 @@ def upload():
     <body>
         <h1>Enter your file below</h1>
         <br/><br/>
-        <form method="POST" action="http://localhost:5000/img" enctype=multipart/form-data>
+        <form method="POST" action="/img" enctype=multipart/form-data>
             Upload File <input type="file" name="image"><br />
             <br/><br/>
             <input type="submit" value="Upload"><br />
