@@ -72,4 +72,4 @@ def img():
         #return send_from_directory(app.config['UPLOAD_FOLDER'],img_name, as_attachment=True)
     else:
         return "Where is the image?"
-app.run(port=5000)
+app.run()
