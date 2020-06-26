@@ -41,7 +41,7 @@ def upload():
     return """
     <html>
     <head>
-        <title>Test Dense Server</title>
+        <title>Test Densed Server</title>
     </head>
     <body>
         <h1>Enter your file below</h1>
