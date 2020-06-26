@@ -68,7 +68,7 @@ def img():
         saved_path = os.path.join(UPLOAD_FOLDER, img_name)
         app.logger.info("saving {}".format(saved_path))
         img.save(saved_path)
-        app.logger.info("os {}".format(os.path.dirname(os.getcwd()))
+        app.logger.info("os {}".format(os.path.dirname(os.getcwd())))
         return "done"
         #return send_from_directory(app.config['UPLOAD_FOLDER'],img_name, as_attachment=True)
     else:
