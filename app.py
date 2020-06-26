@@ -72,4 +72,7 @@ def img():
         #return send_from_directory(app.config['UPLOAD_FOLDER'],img_name, as_attachment=True)
     else:
         return "Where is the image?"
-app.run()
+
+
+if __name__ == "__main__":
+	app.run()
