@@ -1,13 +1,15 @@
-from flask import Flask, request, Response, jsonify, url_for, send_from_directory
+from flask import Flask, request, Response, jsonify, url_for, send_from_directory, render_template
 import logging, os
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
+#PROJECT_HOME = os.path.dirname(os.getcwd())
 PROJECT_HOME = os.path.dirname(os.path.realpath(__file__))
-UPLOAD_FOLDER = "{}/uploads/".format(PROJECT_HOME)
+
+UPLOAD_FOLDER = "{}/static/".format(PROJECT_HOME)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 UPLOAD_FOLDER
-
+#print(PROJECT_HOME)
 def create_new_folder(local_dir):
     newpath = local_dir
     if not os.path.exists(newpath):
@@ -27,7 +29,7 @@ app.logger.setLevel(logging.INFO)
 
 @app.route('/')
 def hello():
-    return "Hellow_World!"
+    return "Hello"
 
 @app.route('/GetPrdeiction', methods=['POST'])
 def get_Prdeiction():
@@ -41,7 +43,7 @@ def upload():
     return """
     <html>
     <head>
-        <title>Test Densed Server</title>
+        <title>Test Dense Server</title>
     </head>
     <body>
         <h1>Enter your file below</h1>
@@ -68,11 +70,11 @@ def img():
         saved_path = os.path.join(UPLOAD_FOLDER, img_name)
         app.logger.info("saving {}".format(saved_path))
         img.save(saved_path)
-        app.logger.info("os {}".format(os.path.dirname(os.getcwd())))
-        return "done"
+        return render_template("index.html", message="Hello Flask!",img_name=img_name);
         #return send_from_directory(app.config['UPLOAD_FOLDER'],img_name, as_attachment=True)
     else:
         return "Where is the image?"
+app.run()
 
 
 if __name__ == "__main__":
